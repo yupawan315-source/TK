@@ -1,0 +1,59 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "config": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$uid": {
+        ".validate": "newData.hasChildren(['firstName','lastName','role','status'])"
+      }
+    },
+
+    "holidays": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+
+    "attendance": {
+      ".read": "auth != null",
+      "$month": {
+        "$uid": {
+          "$date": {
+            ".write": "auth != null",
+            ".validate": "newData.hasChild('date')"
+          }
+        }
+      }
+    },
+
+    "photos": {
+      "$month": {
+        "$uid": {
+          "$date": {
+            ".read": "auth != null",
+            "$slot": {
+              ".write": "auth != null",
+              ".validate": "newData.isString() && newData.val().length < 400000"
+            }
+          }
+        }
+      }
+    },
+
+    "leaves": {
+      ".read": "auth != null",
+      ".indexOn": ["uid", "status"],
+      "$id": {
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['uid','type','dateFrom','dateTo','status'])"
+      }
+    }
+  }
+}

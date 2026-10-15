@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ระบบลงเวลาปฏิบัติราชการ</title>
+<meta name="theme-color" content="#1E3A8A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 21v-7h6v7"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H1a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 2.6 7a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 2.9-1.2V1a2 2 0 1 1 4 0v.1A1.7 1.7 0 0 0 17 2.6a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H23a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L21 2M17 6l3 3M14 9l3 3"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></symbol>
+</svg>
+
+<!-- ======================= กำลังเปิดระบบ ======================= -->
+<div id="vBoot" class="auth">
+  <div class="auth-box"><div class="auth-card" style="text-align:center">
+    <div class="auth-logo"><svg class="ic"><use href="#i-clock"/></svg></div>
+    <h1>ระบบลงเวลาปฏิบัติราชการ</h1>
+    <p class="auth-sub" id="bootMsg">กำลังเชื่อมต่อฐานข้อมูล…</p>
+    <div id="bootErr" class="alert a-err"></div>
+    <button id="bootRetry" class="b-pri b-full hide" onclick="location.reload()">ลองอีกครั้ง</button>
+  </div></div>
+</div>
+
+<!-- ======================= ติดตั้งครั้งแรก ======================= -->
+<div id="vSetup" class="auth hide">
+  <div class="auth-box"><div class="auth-card">
+    <div class="auth-logo"><svg class="ic"><use href="#i-gear"/></svg></div>
+    <h1>ติดตั้งระบบครั้งแรก</h1>
+    <p class="auth-sub">ยังไม่มีผู้ใช้ในระบบ สร้างบัญชีผู้ดูแลระบบเพื่อเริ่มต้น</p>
+    <div id="suMsg" class="alert a-err"></div>
+    <div class="duo">
+      <div class="field"><label>คำนำหน้า</label><input id="suPrefix" value="นาย"></div>
+      <div class="field"><label>ตำแหน่ง<span class="req">*</span></label>
+        <input id="suPos" value="ผู้อำนวยการโรงเรียน"></div>
+    </div>
+    <div class="duo">
+      <div class="field"><label>ชื่อ<span class="req">*</span></label><input id="suFirst"></div>
+      <div class="field"><label>นามสกุล<span class="req">*</span></label><input id="suLast"></div>
+    </div>
+    <div class="field"><label>ชื่อโรงเรียน<span class="req">*</span></label>
+      <input id="suSchool" placeholder="เช่น โรงเรียนบ้าน…"></div>
+    <div class="field"><label>รหัส PIN 4 หลัก<span class="req">*</span></label>
+      <input id="suPin" class="pin-in" type="password" inputmode="numeric" maxlength="4">
+      <div class="help">ใช้เข้าระบบ จดจำให้ดีเพราะกู้คืนไม่ได้</div></div>
+    <button id="suBtn" class="b-pri b-full" onclick="doSetup()">สร้างบัญชีและเริ่มใช้งาน</button>
+  </div></div>
+</div>
+
+<!-- ======================= เข้าสู่ระบบ ======================= -->
+<div id="vLogin" class="auth hide">
+  <div class="auth-box">
+    <div class="auth-card">
+      <div class="auth-logo"><svg class="ic"><use href="#i-clock"/></svg></div>
+      <h1>ระบบลงเวลาปฏิบัติราชการ</h1>
+      <p class="auth-sub" id="lgSchool"></p>
+      <div id="lgMsg" class="alert a-err"></div>
+      <div class="field"><label for="lgUser">ชื่อผู้ใช้<span class="req">*</span></label>
+        <select id="lgUser"></select></div>
+      <div class="field"><label for="lgPin">รหัส PIN<span class="req">*</span></label>
+        <input id="lgPin" class="pin-in" type="password" inputmode="numeric"
+               maxlength="4" autocomplete="off" placeholder="••••">
+        <div class="help">ตัวเลข 4 หลักที่ได้รับจากผู้ดูแลระบบ</div></div>
+      <button id="lgBtn" class="b-pri b-full" onclick="doLogin()">เข้าสู่ระบบ</button>
+      <p class="auth-foot">ลืมรหัส PIN กรุณาติดต่อผู้ดูแลระบบเพื่อขอรหัสใหม่</p>
+    </div>
+    <p class="auth-foot" id="lgArea"></p>
+  </div>
+</div>
+
+<!-- ======================= เปลี่ยนรหัส PIN ======================= -->
+<div id="vPin" class="auth hide">
+  <div class="auth-box"><div class="auth-card">
+    <div class="auth-logo"><svg class="ic"><use href="#i-key"/></svg></div>
+    <h1>ตั้งรหัส PIN ใหม่</h1>
+    <p class="auth-sub">เปลี่ยนรหัสก่อนเริ่มใช้งานครั้งแรก</p>
+    <div id="cpMsg" class="alert a-err"></div>
+    <div class="field"><label>รหัส PIN เดิม</label>
+      <input id="cpOld" class="pin-in" type="password" inputmode="numeric" maxlength="4"></div>
+    <div class="field"><label>รหัส PIN ใหม่</label>
+      <input id="cpNew" class="pin-in" type="password" inputmode="numeric" maxlength="4">
+      <div class="help">เลี่ยงเลขเรียงหรือเลขซ้ำ เช่น 1234 หรือ 1111</div></div>
+    <div class="field"><label>ยืนยันรหัส PIN ใหม่</label>
+      <input id="cpNew2" class="pin-in" type="password" inputmode="numeric" maxlength="4"></div>
+    <button id="cpBtn" class="b-pri b-full" onclick="doChangePin()">บันทึกรหัสใหม่</button>
+  </div></div>
+</div>
+
+<!-- ======================= หน้าหลักของระบบ ======================= -->
+<div id="vApp" class="hide">
+<div class="shell">
+
+  <aside class="side">
+    <div class="side-brand">
+      <div class="tb-mark" style="display:flex"><svg class="ic"><use href="#i-clock"/></svg></div>
+      <div style="min-width:0">
+        <div class="tb-t1">ลงเวลาปฏิบัติราชการ</div>
+        <div class="tb-t2" id="sdSchool"></div>
+      </div>
+    </div>
+    <nav class="side-nav" id="sdNav"></nav>
+    <div class="side-foot">
+      <button class="b-out b-full" onclick="doLogout()">ออกจากระบบ</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-l">
+        <div class="tb-mark"><svg class="ic"><use href="#i-clock"/></svg></div>
+        <div style="min-width:0">
+          <div class="tb-t1" id="tbTitle">ลงเวลาปฏิบัติราชการ</div>
+          <div class="tb-t2" id="tbSchool"></div>
+        </div>
+      </div>
+      <button class="tb-av" id="tbAv" onclick="openMe()" title="บัญชีของฉัน"></button>
+    </header>
+
+    <main class="wrap">
+
+      <!-- ---------- หน้าลงเวลา ---------- -->
+      <section id="pgHome">
+        <div class="hero">
+          <div class="date" id="hoDate"></div>
+          <div class="clock" id="hoClock">--:--</div>
+          <div class="who" id="hoWho"></div>
+          <div class="hero-state" id="hoState">
+            <svg class="ic"><use href="#i-info"/></svg><span>กำลังตรวจสอบสถานะ…</span>
+          </div>
+          <div class="stamp">
+            <div class="stamp-b"><div class="l">เวลาเข้า</div>
+              <div class="v" id="hoIn">—</div><div class="n" id="hoInNote"></div></div>
+            <div class="stamp-b"><div class="l">เวลาออก</div>
+              <div class="v" id="hoOut">—</div><div class="n" id="hoOutNote"></div></div>
+          </div>
+        </div>
+
+        <div class="card" id="hoAction">
+          <div class="geo geo-wait" id="geoBox">
+            <svg class="ic"><use href="#i-pin"/></svg><span id="geoText">กำลังอ่านตำแหน่ง…</span>
+          </div>
+          <div class="cam" id="camBox">
+            <div class="ph" id="camPh">กดปุ่มด้านล่างเพื่อเปิดกล้องและบันทึกเวลา</div>
+            <video id="camVid" class="hide" playsinline muted autoplay></video>
+            <img id="camImg" class="hide" alt="ภาพยืนยันการลงเวลา">
+          </div>
+          <div id="hoBtns"></div>
+        </div>
+      </section>
+
+      <!-- ---------- หน้าการลา ---------- -->
+      <section id="pgLeave" class="hide">
+        <div class="page-t">การลา</div>
+        <div class="page-s">ยื่นใบลาและติดตามสถานะการอนุมัติ</div>
+        <button class="b-pri b-full" onclick="openLeaveForm()" style="margin-bottom:16px">
+          <svg class="ic ic-s"><use href="#i-plus"/></svg>ยื่นใบลา</button>
+        <div class="card">
+          <div class="card-h"><span class="card-t">สิทธิ์การลาคงเหลือ</span>
+            <span class="row-d" id="lvYear"></span></div>
+          <div id="lvQuota"></div>
+        </div>
+        <div class="sec-t">ใบลาของฉัน</div>
+        <div class="card" id="lvList"></div>
+      </section>
+
+      <!-- ---------- หน้าประวัติ ---------- -->
+      <section id="pgHistory" class="hide">
+        <div class="page-t">ประวัติการลงเวลา</div>
+        <div class="page-s" id="hsSub"></div>
+        <div class="field"><label>เดือน</label><input id="hsMonth" type="month" onchange="loadHistory()"></div>
+        <div class="tiles" id="hsTiles"></div>
+        <div class="card" id="hsList"></div>
+      </section>
+
+      <!-- ---------- หน้าแดชบอร์ด ---------- -->
+      <section id="pgDash" class="hide">
+        <div class="page-t">แดชบอร์ดการปฏิบัติงาน</div>
+        <div class="page-s" id="dbSub"></div>
+        <div class="tabs">
+          <button class="tab on" id="dbT1" onclick="dashTab('today')">รายวัน</button>
+          <button class="tab" id="dbT2" onclick="dashTab('month')">รายเดือน</button>
+          <button class="tab" id="dbT3" onclick="dashTab('leave')">อนุมัติการลา</button>
+        </div>
+
+        <div id="dbToday">
+          <div class="field"><label>วันที่</label>
+            <input id="dbDay" type="date" onchange="loadDashToday()"></div>
+          <div class="tiles" id="dbTiles"></div>
+          <div class="card">
+            <div class="card-h"><span class="card-t" id="dbDayLabel">สถานะรายบุคคล</span>
+              <button class="b-out b-sm" onclick="loadDashToday()">รีเฟรช</button></div>
+            <div id="dbRows"></div>
+          </div>
+          <button class="b-out b-full" onclick="openHolidayToday()" style="margin-bottom:16px">
+            ประกาศวันหยุดกรณีพิเศษ</button>
+        </div>
+
+        <div id="dbMonth" class="hide">
+          <div class="field"><label>เดือน</label>
+            <input id="dbMonthPick" type="month" onchange="loadDashMonth()"></div>
+          <div class="card" id="dbMonthList"></div>
+        </div>
+
+        <div id="dbLeave" class="hide">
+          <div class="card" id="dbLeaveList"></div>
+        </div>
+      </section>
+
+      <!-- ---------- หน้ารายงาน ---------- -->
+      <section id="pgReport" class="hide">
+        <div class="noprint">
+          <div class="page-t">รายงานการลงเวลาปฏิบัติราชการ</div>
+          <div class="page-s">จัดทำเป็นรายวัน หนึ่งวันต่อหนึ่งแผ่น พร้อมช่องรับรองของผู้อำนวยการ</div>
+          <div class="card">
+            <div class="tabs">
+              <button class="tab on" id="rpT1" onclick="reportMode('day')">รายวัน</button>
+              <button class="tab" id="rpT2" onclick="reportMode('month')">ทั้งเดือน</button>
+            </div>
+            <div class="field" id="rpDayWrap"><label>วันที่</label>
+              <input id="rpDay" type="date" onchange="buildReport()"></div>
+            <div class="field hide" id="rpMonthWrap"><label>เดือน</label>
+              <input id="rpMonth" type="month" onchange="buildReport()"></div>
+            <div id="rpMsg" class="alert a-info"></div>
+            <button class="b-pri b-full" onclick="window.print()">
+              <svg class="ic ic-s"><use href="#i-list"/></svg>พิมพ์รายงาน</button>
+            <div class="help" style="text-align:center;margin-top:8px">
+              ในหน้าต่างพิมพ์ ให้เลือกขนาดกระดาษ A4 และปลายทางเป็น บันทึกเป็น PDF
+              หากต้องการไฟล์เอกสาร</div>
+          </div>
+        </div>
+        <div id="rpOut"></div>
+      </section>
+
+      <!-- ---------- หน้าตั้งค่า ---------- -->
+      <section id="pgAdmin" class="hide">
+        <div class="page-t">ตั้งค่าระบบ</div>
+        <div class="page-s">ทะเบียนบุคลากร เกณฑ์เวลา พิกัด และวันหยุด</div>
+        <div class="tabs">
+          <button class="tab on" id="adT1" onclick="adminTab('users')">บุคลากร</button>
+          <button class="tab" id="adT2" onclick="adminTab('config')">เกณฑ์และพิกัด</button>
+          <button class="tab" id="adT3" onclick="adminTab('holiday')">วันหยุด</button>
+        </div>
+
+        <div id="adUsers">
+          <button class="b-pri b-full" onclick="openUserForm()" style="margin-bottom:16px">
+            <svg class="ic ic-s"><use href="#i-plus"/></svg>เพิ่มบุคลากร</button>
+          <div class="card" id="adUserList"></div>
+        </div>
+
+        <div id="adConfig" class="hide">
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">ข้อมูลหน่วยงาน</div>
+            <div class="field"><label>ชื่อโรงเรียน</label><input id="cfSchool"></div>
+            <div class="field"><label>สำนักงานเขตพื้นที่</label><input id="cfArea"></div>
+          </div>
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">เกณฑ์เวลาปฏิบัติราชการ</div>
+            <div class="duo">
+              <div class="field"><label>เริ่มเช็คอินได้</label><input id="cfOpen" type="time"></div>
+              <div class="field"><label>เวลาปฏิบัติราชการ</label><input id="cfStart" type="time"></div>
+            </div>
+            <div class="duo">
+              <div class="field"><label>ผ่อนผันได้ถึง</label><input id="cfLate" type="time"></div>
+              <div class="field"><label>เวลาเลิก</label><input id="cfEnd" type="time"></div>
+            </div>
+            <div class="duo">
+              <div class="field"><label>เตือนเช็คอิน</label><input id="cfRemIn" type="time"></div>
+              <div class="field"><label>เตือนเช็คเอาต์</label><input id="cfRemOut" type="time"></div>
+            </div>
+            <div class="help">เกินเวลาผ่อนผันต้องระบุเหตุผลจึงจะลงเวลาได้</div>
+          </div>
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">พิกัดสถานศึกษา</div>
+            <div class="duo">
+              <div class="field"><label>ละติจูด</label><input id="cfLat" inputmode="decimal"></div>
+              <div class="field"><label>ลองจิจูด</label><input id="cfLng" inputmode="decimal"></div>
+            </div>
+            <div class="field"><label>รัศมีที่อนุญาต (เมตร)</label>
+              <input id="cfRadius" type="number" min="30" max="2000"></div>
+            <button class="b-out b-full" onclick="useMyLocation()">ใช้ตำแหน่งปัจจุบันเป็นพิกัดโรงเรียน</button>
+          </div>
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">สิทธิ์การลาต่อปี (วันทำการ)</div>
+            <div class="duo">
+              <div class="field"><label>ลาป่วย</label><input id="cfQSick" type="number"></div>
+              <div class="field"><label>ลากิจส่วนตัว</label><input id="cfQBiz" type="number"></div>
+            </div>
+            <div class="duo">
+              <div class="field"><label>ลาคลอดบุตร</label><input id="cfQMat" type="number"></div>
+              <div></div>
+            </div>
+            <div class="help">ลาอุปสมบท ลาศึกษาต่อ ไปราชการ และอบรมสัมมนา ไม่จำกัดจำนวนวัน</div>
+          </div>
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">การแจ้งเตือน Lark</div>
+            <div class="field"><label>Webhook ของกลุ่ม</label>
+              <input id="cfLark" placeholder="https://open.larksuite.com/open-apis/bot/v2/hook/...">
+              <div class="help">ใช้โดยตัวตั้งเวลาภายนอกในการส่งข้อความแจ้งเตือน</div></div>
+          </div>
+          <button class="b-pri b-full" id="cfBtn" onclick="saveConfig()">บันทึกการตั้งค่า</button>
+        </div>
+
+        <div id="adHoliday" class="hide">
+          <div class="card">
+            <div class="card-t" style="margin-bottom:14px">เพิ่มวันหยุด</div>
+            <div class="duo">
+              <div class="field"><label>วันที่เริ่ม</label><input id="hdFrom" type="date"></div>
+              <div class="field"><label>ถึงวันที่</label><input id="hdTo" type="date"></div>
+            </div>
+            <div class="field"><label>ชื่อวันหยุด</label>
+              <input id="hdName" placeholder="เช่น วันปิยมหาราช หรือ ปิดภาคเรียนที่ 1"></div>
+            <button class="b-pri b-full" onclick="addHoliday()">เพิ่มวันหยุด</button>
+          </div>
+          <div class="sec-t">วันหยุดที่บันทึกไว้</div>
+          <div class="card" id="hdList"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottomnav" id="bnav"></nav>
+  </div>
+</div>
+</div>
+
+<!-- ======================= หน้าต่างซ้อน ======================= -->
+
+<div id="mReason" class="modal"><div class="mbox" style="max-width:440px">
+  <div class="mhead"><h3 id="rsTitle">ระบุเหตุผล</h3><p id="rsDesc"></p></div>
+  <div class="mbody">
+    <div class="field" style="margin:0"><label>เหตุผล<span class="req">*</span></label>
+      <textarea id="rsText" placeholder="ระบุเหตุผลโดยย่อ"></textarea></div>
+  </div>
+  <div class="mfoot">
+    <button class="b-out" onclick="closeM('mReason')">ยกเลิก</button>
+    <button class="b-pri" id="rsOk">ยืนยันและบันทึกเวลา</button>
+  </div>
+</div></div>
+
+<div id="mLeave" class="modal"><div class="mbox">
+  <div class="mhead"><h3>ยื่นใบลา</h3><p>กรอกข้อมูลแล้วส่งให้ผู้อำนวยการพิจารณา</p></div>
+  <div class="mbody">
+    <div id="lfMsg" class="alert a-err"></div>
+    <div class="field"><label>ประเภทการลา<span class="req">*</span></label>
+      <div class="opts" id="lfTypes"></div></div>
+    <div class="field hide" id="lfPeriodWrap"><label>ช่วงเวลา<span class="req">*</span></label>
+      <select id="lfPeriod" onchange="calcLeaveDays()">
+        <option value="FULL">เต็มวัน</option>
+        <option value="AM">ครึ่งวันเช้า</option>
+        <option value="PM">ครึ่งวันบ่าย</option>
+      </select>
+      <div class="help" id="lfPeriodHelp"></div></div>
+    <div class="duo">
+      <div class="field"><label>วันที่เริ่ม<span class="req">*</span></label>
+        <input id="lfFrom" type="date" onchange="calcLeaveDays()"></div>
+      <div class="field"><label>ถึงวันที่<span class="req">*</span></label>
+        <input id="lfTo" type="date" onchange="calcLeaveDays()"></div>
+    </div>
+    <div class="alert a-info show" id="lfDays">เลือกวันที่เพื่อคำนวณจำนวนวัน</div>
+    <div class="field" style="margin:0"><label>เหตุผล<span class="req">*</span></label>
+      <textarea id="lfReason" placeholder="ระบุเหตุผลการลา"></textarea></div>
+  </div>
+  <div class="mfoot">
+    <button class="b-out" onclick="closeM('mLeave')">ยกเลิก</button>
+    <button class="b-pri" id="lfBtn" onclick="submitLeave()">ส่งใบลา</button>
+  </div>
+</div></div>
+
+<div id="mLeaveView" class="modal"><div class="mbox">
+  <div class="mhead"><h3 id="lvvTitle">รายละเอียดใบลา</h3><p id="lvvSub"></p></div>
+  <div class="mbody"><div id="lvvBody"></div>
+    <div class="field hide" id="lvvCmtWrap" style="margin:16px 0 0">
+      <label>ความเห็นของผู้อำนวยการ</label>
+      <textarea id="lvvCmt" placeholder="ระบุความเห็น (ไม่บังคับเมื่ออนุมัติ)"></textarea></div>
+  </div>
+  <div class="mfoot" id="lvvFoot"></div>
+</div></div>
+
+<div id="mUser" class="modal"><div class="mbox">
+  <div class="mhead"><h3 id="ufTitle">เพิ่มบุคลากร</h3><p id="ufDesc"></p></div>
+  <div class="mbody">
+    <div id="ufMsg" class="alert a-err"></div>
+    <div class="duo">
+      <div class="field"><label>คำนำหน้า</label><input id="ufPrefix" placeholder="นาย / นาง / นางสาว"></div>
+      <div class="field"><label>ตำแหน่ง<span class="req">*</span></label>
+        <input id="ufPos" placeholder="ครู / ธุรการ / นักการภารโรง"></div>
+    </div>
+    <div class="field"><label>ประเภทบุคลากร<span class="req">*</span></label>
+      <select id="ufType"></select>
+      <div class="help">ใช้สรุปจำนวนท้ายรายงานการลงเวลาประจำวัน</div></div>
+    <div class="duo" style="display:none">
+    </div>
+    <div class="duo">
+      <div class="field"><label>ชื่อ<span class="req">*</span></label><input id="ufFirst"></div>
+      <div class="field"><label>นามสกุล<span class="req">*</span></label><input id="ufLast"></div>
+    </div>
+    <div class="duo">
+      <div class="field"><label>สถานะในระบบ<span class="req">*</span></label>
+        <select id="ufRole">
+          <option value="TEACHER">ผู้ปฏิบัติงาน</option>
+          <option value="DIRECTOR">ผู้อำนวยการ</option>
+        </select></div>
+      <div class="field" id="ufStWrap"><label>สถานะการปฏิบัติงาน</label>
+        <select id="ufStatus">
+          <option value="ACTIVE">ปฏิบัติงาน</option>
+          <option value="INACTIVE">พ้นหน้าที่</option>
+        </select></div>
+    </div>
+    <div class="field"><label>รหัสผู้ใช้ Lark</label>
+      <input id="ufLark" placeholder="เว้นว่างได้ ใช้สำหรับแจ้งเตือนรายบุคคล"></div>
+    <div class="opt" id="ufAdminRow" onclick="toggleAdmin()">
+      <span class="dot"></span>
+      <span>ให้สิทธิ์ผู้ดูแลระบบ<br>
+        <span class="row-d">จัดการบุคลากร ตั้งค่าระบบ และอนุมัติการลาได้</span></span>
+    </div>
+  </div>
+  <div class="mfoot">
+    <button class="b-out" onclick="closeM('mUser')">ยกเลิก</button>
+    <button class="b-pri" id="ufBtn" onclick="saveUser()">บันทึก</button>
+  </div>
+</div></div>
+
+<div id="mPinShow" class="modal"><div class="mbox" style="max-width:400px">
+  <div class="mhead"><h3>รหัส PIN สำหรับเข้าใช้งาน</h3><p id="psFor"></p></div>
+  <div class="mbody" style="text-align:center">
+    <div style="background:var(--navy-soft);border:1px dashed var(--navy);border-radius:8px;padding:22px;margin-bottom:16px">
+      <div style="font-family:var(--head);font-size:34px;font-weight:700;letter-spacing:.3em;color:var(--navy)" id="psNum"></div>
+      <div class="help" style="margin-top:4px">รหัสนี้แสดงเพียงครั้งเดียว</div>
+    </div>
+    <p style="font-size:13px;line-height:21px;color:var(--meta);margin:0">
+      จดรหัสแจ้งเจ้าตัว ระบบจัดเก็บเป็นค่าเข้ารหัสจึงแสดงซ้ำไม่ได้<br>
+      ผู้ใช้จะถูกบังคับให้เปลี่ยนรหัสเมื่อเข้าใช้ครั้งแรก</p>
+  </div>
+  <div class="mfoot" style="justify-content:center">
+    <button class="b-pri" onclick="closeM('mPinShow');loadUserList()">รับทราบ</button>
+  </div>
+</div></div>
+
+<div id="mDetail" class="modal"><div class="mbox">
+  <div class="mhead"><h3 id="dtTitle">รายละเอียดการลงเวลา</h3><p id="dtSub"></p></div>
+  <div class="mbody" id="dtBody"></div>
+  <div class="mfoot"><button class="b-out" onclick="closeM('mDetail')">ปิด</button></div>
+</div></div>
+
+<div id="mMe" class="modal"><div class="mbox" style="max-width:400px">
+  <div class="mhead"><h3 id="meName"></h3><p id="meRole"></p></div>
+  <div class="mbody" id="meBody"></div>
+  <div class="mfoot">
+    <button class="b-out" onclick="closeM('mMe');goChangePin()">เปลี่ยนรหัส PIN</button>
+    <button class="b-del" onclick="doLogout()">ออกจากระบบ</button>
+  </div>
+</div></div>
+
+<div id="toast"></div>
+<canvas id="snapCanvas" class="hide"></canvas>
+
+<script>window.__FB_READY__ = false;</script>
+<!-- ?v= ท้ายชื่อไฟล์ บังคับให้เบราว์เซอร์โหลด app.js ใหม่ ไม่ใช้ของเก่าในแคช
+     เมื่อแก้ไข app.js ครั้งต่อไป ให้เปลี่ยนเลขนี้ด้วย -->
+<script src="app.js?v=20261009c"></script>
+</body>
+</html>
